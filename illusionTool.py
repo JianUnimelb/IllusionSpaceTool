@@ -45,8 +45,8 @@ AUT = (0.001*physicalangle*physicalsize-0.020*physicalangle*sv+0.010*physicalang
 plt.plot(AUT, sv, label='Angle upscaling thresholds', color = 'lime', linestyle='--', linewidth=2)
 plt.plot(ADT, sv, label='Angle downscaling thresholds', color = 'lightblue', linestyle='--', linewidth=2)
 
-ax.set_xlim(0, 2)
-ax.set_ylim(0, 2)
+ax.set_xlim(0.3, 2)
+ax.set_ylim(0.3, 2)
 ax.set_xlabel("Virtual angle/physical angle")
 ax.set_ylabel("Virtual size/physical size")
 plt.legend(fontsize=12)
