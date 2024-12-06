@@ -76,12 +76,12 @@ st.write("Virtual angle should be smaller than: ", aut*physicalangle, "°")
 
 swithin = False
 awithin = False
-if sdt<virtualsize&sut>virtualsize:
+if sdt<virtualsize and sut>virtualsize:
     swithin = True
-if adt<virtualangle&aut>virtualangle:
+if adt<virtualangle and aut>virtualangle:
     awithin = True
 
-if swithin == True&awithin == True:
+if swithin == True and awithin == True:
     st.write("Great! Your virtual properties are within the illusion spaces and the user won't notice the difference.", color = "green")
 else:
     st.write("Warning! Your virtual properties are outside the illusion spaces and the user will notice the difference.", color = "red")
