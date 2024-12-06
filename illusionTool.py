@@ -85,5 +85,5 @@ if swithin == True and awithin == True:
     st.write('<p style="color:green;">Great! Your virtual properties are within the illusion spaces and the user will not notice the difference.</p>', unsafe_allow_html=True)
 else:
     st.write('<p style="color:red;">Warning! Your virtual properties are outside the illusion spaces and the user will notice the difference.</p>', unsafe_allow_html=True)
-    st.write('<p style="color:red;">The virtual size should be within {sdt} and {sut}.</p>', unsafe_allow_html=True)
-    st.write('<p style="color:red;">The virtual angle should be within {adt} and {aut}.</p>', unsafe_allow_html=True)
+    st.write(f'<p style="color:red;">The virtual size should be within {sdt} and {sut}.</p>', unsafe_allow_html=True)
+    st.write(f'<p style="color:red;">The virtual angle should be within {adt} and {aut}.</p>', unsafe_allow_html=True)
