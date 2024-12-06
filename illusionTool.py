@@ -82,7 +82,8 @@ if adt<virtualangle and aut>virtualangle:
     awithin = True
 
 if swithin == True and awithin == True:
-    st.write("<p style="color:red;">Great! Your virtual properties are within the illusion spaces and the user won't notice the difference.</p>", unsafe_allow_html=True)
+    st.write("Great! Your virtual properties are within the illusion spaces and the user won't notice the difference.", color = "green")
+    st.write('<p style="color:red;">This is red text</p>', unsafe_allow_html=True)
 else:
     st.write("Warning! Your virtual properties are outside the illusion spaces and the user will notice the difference.", color = "red")
     st.write("The virtual size should be within ", sdt," and ",sut, color = "red")
