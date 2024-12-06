@@ -57,21 +57,33 @@ ax.grid(True)
 # Display the Matplotlib figure in Streamlit
 st.pyplot(fig)
 
-st.write("Instructions 2: If you need concrete thresholds for virtual sizes, please input the virtual angles for calculating (because it's influencing the size thresholds)")
+st.write("Instructions 2: Please input the virtual angles for calculating (because it's influencing the size thresholds)")
 virtualangle = st.slider("What is the Virtual Angle (°)?", 0,22,8)/physicalangle
 sdt = (-0.010*physicalangle*virtualangle+0.005*physicalangle-0.002*virtualangle*physicalsize+0.087*virtualangle+0.001*physicalsize*physicalsize+0.035*physicalsize+0.275)/(-0.007*physicalangle+0.037*physicalsize+0.489)
 sut = (-0.004*physicalangle*virtualangle+0.001*physicalangle*physicalsize-0.030*physicalangle+0.009*virtualangle*physicalsize-0.093*virtualangle+0.001*physicalsize*physicalsize-0.086*physicalsize+1.778)/(-0.026*physicalangle-0.029*physicalsize+1.197)
 
 st.write("Virtual size should be larger than: ", sdt*physicalsize, "cm")
 st.write("Virtual size should be smaller than: ", sut*physicalsize, "cm")
-st.write("Instructions 3: However, the virtual angle you input maybe outside the illusion spaces. After selecting the virtual size you need from the calculation above, please input it below to check if your virtual angle is within the illusion spaces.")
+# st.write("Instructions 3: However, the virtual angle you input maybe outside the illusion spaces. After selecting the virtual size you need from the calculation above, please input it below to check if your virtual angle is within the illusion spaces.")
 
-st.write("Instructions 4: Or, if you need concrete thresholds for virtual angles, please input the virtual sizes for calculating (because it's influencing the angle thresholds)")
-virtualsize = st.slider("Or, what is the Virtual Size (cm)?", 1,11,6)/physicalsize
+st.write("Instructions 3: Please input the virtual sizes for calculating (because it's influencing the angle thresholds)")
+virtualsize = st.slider("What is the Virtual Size (cm)?", 1,11,6)/physicalsize
 adt = (0.001*physicalangle*physicalsize-0.011*physicalangle-0.001*physicalsize*physicalsize-0.008*physicalsize*virtualsize-0.010*physicalsize+0.165*virtualsize+0.275)/(-0.001*physicalangle-0.059*physicalsize+0.785)
 aut = (0.001*physicalangle*physicalsize-0.020*physicalangle*virtualsize+0.010*physicalangle-0.001*physicalsize*physicalsize-0.074*physicalsize*virtualsize+0.023*physicalsize+0.873*virtualsize-0.054)/(0.005*physicalangle-0.047*physicalsize+0.604)
 
 st.write("Virtual angle should be larger than: ", adt*physicalangle, "°")
 st.write("Virtual angle should be smaller than: ", aut*physicalangle, "°")
 
-st.write("Instructions 5: However, the virtual size you input maybe outside the illusion spaces. After selecting the virtual angle you need from the calculation above, please input it above to check if your virtual size is within the illusion spaces.")
+swithin = False
+awithin = False
+if sdt<virtualsize&sut>virtualsize:
+    swithin = True
+if adt<virtualangle&aut>virtualangle:
+    awithin = True
+
+if swithin == True&awithin == True:
+    st.write("Great! Your virtual properties are within the illusion spaces and the user won't notice the difference.", color = "green")
+else:
+    st.write("Warning! Your virtual properties are outside the illusion spaces and the user will notice the difference.", color = "red")
+    st.write("The virtual size should be within ", sdt," and ",sut, color = "red")
+    st.write("The virtual angle should be within ", adt," and ",aut, color = "red")
